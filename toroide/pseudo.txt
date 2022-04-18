@@ -1,0 +1,22 @@
+int main(){
+    si rank==0 entonces:
+        si size != L * L: 
+            seguir=0
+            MPI_Bcast(seguir, 1, MPI_INT, 0 MPI_COMM_WORLD)
+        si no:
+            numTotales = leerfichero()
+            si numTotales!= size: 
+                seguir=0
+                MPI_Bcast(seguir, 1, MPI_INT, 0 MPI_COMM_WORLD)
+            si no:
+                MPI_Bcast(seguir, 1, MPI_INT, 0 MPI_COMM_WORLD)
+                para cada rank hasta numTotales-1:
+                    MPI_Send(numero, 1, MPI_INT, i, 0, MPI_COMM_WORLD)
+    
+    MPI_Bcast(seguir, 1, MPI_INT, 0, MPI_COMM_WORLD);
+    si seguir!=0:
+        si rank!=0: MPI_Recv(numero, 1, MPI_INT, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &status)
+        obtenerVecinos()
+        minimo=obtenerMinmo();
+        si rank==0: print(minimo)
+}
